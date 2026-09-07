@@ -1,906 +1,747 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>30 Recetas Keto en 20 Minutos | Ebook Digital</title>
-  <meta name="description" content="Descubrí 30 recetas keto fáciles y rápidas para preparar en 20 minutos o menos. Desayunos, almuerzos, cenas, snacks, postres y bebidas.">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30 Recetas Keto en 20 Minutos | Ebook Digital</title>
+<meta name="description" content="Descubrí 30 recetas keto fáciles y rápidas para preparar en 20 minutos o menos. Desayunos, almuerzos, cenas, snacks, postres y bebidas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-dark:#14281D;
+    --brand-olive:#35523F;
+    --brand-light:#F8F9FA;
+    --brand-card:#FFFFFF;
+    --brand-accent:#E65C00;
+    --brand-accent-hover:#CC5200;
+    --brand-muted:#6B7280;
+    --gray-100:#F3F4F6;
+    --gray-200:#E5E7EB;
+    --gray-600:#4B5563;
+    --gray-900:#111827;
+    --emerald-50:#ECFDF5;
+    --emerald-100:#D1FAE5;
+    --emerald-200:#A7F3D0;
+    --emerald-600:#059669;
+    --emerald-800:#065F46;
+    --shadow-soft:0 10px 30px -5px rgba(20,40,29,0.08);
+    --shadow-card:0 15px 35px -5px rgba(20,40,29,0.12);
+    --shadow-glow:0 10px 25px -5px rgba(230,92,0,0.35);
+    --max-7xl:1280px;
+    --max-4xl:896px;
+    --max-3xl:768px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    background:var(--brand-light);
+    color:#1F2937;
+    overflow-x:hidden;
+    line-height:1.55;
+  }
+  img,svg{display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .icon{ width:20px; height:20px; }
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              dark: '#14281D',      /* Verde oscuro principal */
-              olive: '#35523F',     /* Verde oliva secundario */
-              light: '#F8F9FA',     /* Fondo claro */
-              card: '#FFFFFF',      /* Fondo tarjetas */
-              accent: '#E65C00',    /* Naranja cálido de alta conversión */
-              accentHover: '#CC5200',
-              muted: '#6B7280'
-            }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif']
-          },
-          boxShadow: {
-            'soft': '0 10px 30px -5px rgba(20, 40, 29, 0.05)',
-            'card': '0 15px 35px -5px rgba(20, 40, 29, 0.08)',
-            'glow': '0 10px 25px -5px rgba(230, 92, 0, 0.3)'
-          }
-        }
-      }
-    }
-  </script>
+  .container{ max-width:var(--max-7xl); margin:0 auto; padding:0 24px; }
+  .container-4xl{ max-width:var(--max-4xl); margin:0 auto; padding:0 24px; }
+  .container-3xl{ max-width:var(--max-3xl); margin:0 auto; padding:0 24px; }
 
-  <style>
-    body {
-      background-color: #F8F9FA;
-      color: #1F2937;
-      overflow-x: hidden;
-    }
-    .hero-mockup-shadow {
-      filter: drop-shadow(0 25px 25px rgba(20, 40, 29, 0.25));
-    }
-    details > summary::-webkit-details-marker {
-      display: none;
-    }
-  </style>
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--brand-accent); color:#fff; font-weight:700;
+    border-radius:12px; padding:16px 32px; font-size:1.05rem;
+    box-shadow:var(--shadow-glow); border:none; cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{ background:var(--brand-accent-hover); transform:translateY(-2px); }
+  .btn-pill{ border-radius:100px; padding:10px 24px; font-size:0.9rem; }
+
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(255,255,255,0.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--gray-100);
+  }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; height:80px; }
+  .logo{ font-size:1.25rem; font-weight:800; letter-spacing:-0.01em; color:var(--brand-dark); }
+  .logo span{ color:var(--brand-accent); }
+  .nav-links{ display:flex; align-items:center; gap:32px; }
+  .nav-links a{ font-size:0.9rem; font-weight:600; color:var(--gray-600); }
+  .nav-links a:hover{ color:var(--brand-dark); }
+  .nav-cta-desktop{ display:block; }
+  .menu-btn{ display:none; background:none; border:none; cursor:pointer; color:var(--brand-dark); padding:8px; }
+  .mobile-menu{ display:none; background:#fff; border-bottom:1px solid var(--gray-200); padding:8px 24px 24px; }
+  .mobile-menu.open{ display:block; }
+  .mobile-menu a{ display:block; padding:10px 0; font-weight:600; color:#374151; }
+  .mobile-menu .btn{ width:100%; margin-top:8px; }
+  @media (max-width:860px){
+    .nav-links, .nav-cta-desktop{ display:none; }
+    .menu-btn{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; padding:150px 0 100px;
+    background:linear-gradient(to bottom, #EFF3F0, var(--brand-light));
+    overflow:hidden;
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:56px; align-items:center; }
+  .badge-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(20,40,29,0.05); border:1px solid rgba(20,40,29,0.1);
+    color:var(--brand-olive); font-size:0.85rem; font-weight:600;
+    padding:7px 16px; border-radius:100px; margin-bottom:22px;
+  }
+  .badge-pill .icon{ width:16px; height:16px; color:var(--brand-accent); }
+  .hero h1{
+    font-size:clamp(2.2rem,4.4vw,3.6rem); font-weight:800; color:var(--brand-dark);
+    letter-spacing:-0.02em; line-height:1.1; margin-bottom:16px;
+  }
+  .hero-sub{ font-size:1.2rem; font-weight:600; color:var(--brand-olive); margin-bottom:12px; max-width:38ch; }
+  .hero-tag{
+    display:inline-block; background:rgba(255,255,255,0.8); border:1px solid var(--emerald-100);
+    border-radius:8px; padding:6px 14px; font-size:0.85rem; font-weight:700; color:var(--emerald-800);
+    box-shadow:0 1px 2px rgba(0,0,0,0.04); margin-bottom:30px;
+  }
+  .hero-actions{ margin-bottom:16px; }
+  .hero-note{ display:flex; align-items:center; gap:8px; font-size:0.85rem; color:var(--brand-muted); font-weight:500; }
+  .hero-note .icon{ width:16px; height:16px; color:var(--brand-accent); }
+
+  .mockup-wrap{ position:relative; display:flex; justify-content:center; }
+  .blob{ position:absolute; border-radius:50%; filter:blur(40px); opacity:0.6; }
+  .blob-1{ width:130px; height:130px; background:var(--emerald-100); top:-24px; left:-24px; }
+  .blob-2{ width:160px; height:160px; background:#FFE4CC; bottom:-24px; right:-24px; }
+  .mockup{
+    position:relative; width:100%; max-width:340px;
+    background:var(--brand-dark); border-radius:20px; padding:30px;
+    color:#fff; box-shadow:var(--shadow-card), 0 25px 25px rgba(20,40,29,0.25);
+    border:4px solid rgba(255,255,255,0.2);
+  }
+  .mockup-inner{
+    border:2px dashed rgba(255,255,255,0.3); border-radius:14px; padding:26px;
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    min-height:360px; text-align:center;
+    background:linear-gradient(to bottom right, var(--brand-dark), var(--brand-olive));
+  }
+  .mockup-top{ width:100%; display:flex; justify-content:space-between; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--emerald-200); font-weight:700; }
+  .mockup-mid{ margin:auto 0; padding:24px 0; }
+  .mockup-icon{
+    width:64px; height:64px; background:rgba(255,255,255,0.1); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 16px;
+  }
+  .mockup-icon .icon{ width:32px; height:32px; color:#fff; }
+  .mockup-mid .big{ display:block; font-size:1.7rem; font-weight:800; line-height:1.2; margin-bottom:6px; }
+  .mockup-mid .big span{ color:var(--brand-accent); }
+  .mockup-mid .small{ display:block; font-size:0.95rem; font-weight:600; color:var(--emerald-200); }
+  .mockup-bottom{ width:100%; padding-top:16px; border-top:1px solid rgba(255,255,255,0.2); font-size:0.75rem; color:#E5E7EB; font-weight:500; }
+
+  /* ---------- SECTION HEAD ---------- */
+  .sec-head{ max-width:var(--max-3xl); margin:0 auto 60px; text-align:center; }
+  .sec-head h2{ font-size:clamp(1.8rem,3.2vw,2.4rem); font-weight:800; color:var(--brand-dark); letter-spacing:-0.02em; margin-bottom:14px; }
+  .sec-head p{ font-size:1.1rem; color:var(--gray-600); }
+
+  section{ padding:80px 0; }
+  .bg-white{ background:#fff; }
+  .bg-light{ background:var(--brand-light); }
+  .bg-dark{ background:var(--brand-dark); color:#fff; }
+
+  /* ---------- PROBLEM CARDS ---------- */
+  .grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-bottom:48px; }
+  .prob-card{
+    background:#F9FAFB; border:1px solid var(--gray-100); border-radius:16px; padding:24px;
+    transition:box-shadow .25s ease;
+  }
+  .prob-card:hover{ box-shadow:var(--shadow-soft); }
+  .prob-icon{
+    width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem; font-weight:700; margin-bottom:16px;
+  }
+  .prob-card h3{ font-size:1rem; font-weight:700; color:var(--gray-900); margin-bottom:8px; }
+  .prob-card p{ font-size:0.9rem; color:var(--gray-600); }
+
+  .solution-box{
+    max-width:var(--max-4xl); margin:0 auto; background:#EFF3F0; border:1px solid var(--emerald-100);
+    border-radius:16px; padding:34px; text-align:center; box-shadow:var(--shadow-soft);
+  }
+  .solution-box p{ font-size:1.2rem; font-weight:700; color:var(--brand-dark); }
+  .solution-box span{ color:var(--brand-accent); }
+
+  /* ---------- EBOOK PRESENTATION ---------- */
+  .ebook-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .check-card{
+    background:#fff; border-radius:24px; padding:32px; border:1px solid var(--gray-100); box-shadow:var(--shadow-card);
+  }
+  .check-item{
+    display:flex; align-items:center; gap:12px; padding:16px; border-radius:12px;
+    background:#F9FAFB; border:1px solid var(--gray-100); margin-bottom:16px;
+  }
+  .check-item:last-child{ margin-bottom:0; }
+  .check-item .icon{ color:var(--brand-accent); flex-shrink:0; }
+  .check-item span{ font-weight:700; font-size:0.98rem; color:#1F2937; }
+
+  .cat-mini-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .cat-mini{ background:#fff; border:1px solid var(--gray-100); border-radius:16px; padding:24px; box-shadow:var(--shadow-soft); }
+  .cat-mini.span-2{ grid-column:1 / -1; }
+  .cat-mini-icon{ width:40px; height:40px; border-radius:12px; background:var(--emerald-50); color:var(--brand-olive); display:flex; align-items:center; justify-content:center; font-weight:700; margin-bottom:12px; }
+  .cat-mini h3{ font-size:1rem; font-weight:700; color:var(--brand-dark); margin-bottom:4px; }
+  .cat-mini p{ font-size:0.82rem; color:#6B7280; }
+
+  /* ---------- RECIPE CATEGORY LISTS ---------- */
+  .cat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .cat-block{ background:var(--brand-light); border:1px solid var(--gray-100); border-radius:24px; padding:26px; }
+  .cat-block.span-2{ grid-column:span 2; }
+  .cat-tag{
+    display:inline-block; background:var(--brand-olive); color:#fff; font-size:0.72rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:0.08em; padding:6px 14px; border-radius:100px; margin-bottom:16px;
+  }
+  .cat-block ul{ display:flex; flex-direction:column; gap:12px; }
+  .cat-block li{ display:flex; align-items:flex-start; gap:8px; font-size:0.92rem; font-weight:600; color:#374151; }
+  .cat-block li .icon{ width:16px; height:16px; color:var(--brand-accent); margin-top:2px; flex-shrink:0; }
+  .cat-two-col{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+  /* ---------- RAPIDEZ (dark) ---------- */
+  .rapidez-grid{ display:grid; grid-template-columns:0.4fr 0.6fr; gap:48px; align-items:center; }
+  .timer-circle{
+    width:220px; height:220px; border-radius:50%; border:4px dashed rgba(230,92,0,0.5);
+    background:rgba(255,255,255,0.05); display:flex; flex-direction:column; align-items:center; justify-content:center;
+    margin:0 auto;
+  }
+  .timer-circle .icon{ width:36px; height:36px; color:var(--brand-accent); margin-bottom:8px; }
+  .timer-circle .num{ font-size:3rem; font-weight:800; }
+  .timer-circle .label{ font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:#D1D5DB; font-weight:700; margin-top:4px; }
+  .rapidez-text h2{ color:#fff; font-size:clamp(1.8rem,3.2vw,2.4rem); font-weight:800; margin-bottom:16px; }
+  .rapidez-text p{ color:#D1D5DB; font-size:1.05rem; margin-bottom:28px; max-width:50ch; }
+
+  /* ---------- RECIPE PREVIEW CARDS ---------- */
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .rp-card{
+    background:#fff; border-radius:16px; padding:24px; border:1px solid var(--gray-100);
+    box-shadow:var(--shadow-soft); display:flex; flex-direction:column; justify-content:space-between;
+    transition:box-shadow .25s ease;
+  }
+  .rp-card:hover{ box-shadow:var(--shadow-card); }
+  .rp-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .rp-keto{ background:var(--emerald-50); color:var(--emerald-800); font-size:0.72rem; font-weight:700; padding:4px 10px; border-radius:6px; }
+  .rp-time{ display:flex; align-items:center; gap:4px; font-size:0.75rem; font-weight:600; color:#6B7280; }
+  .rp-time .icon{ width:14px; height:14px; color:var(--brand-accent); }
+  .rp-card h3{ font-size:1.1rem; font-weight:700; color:var(--brand-dark); margin-bottom:4px; }
+  .rp-card .servings{ font-size:0.75rem; color:#6B7280; margin-bottom:16px; }
+  .rp-foot{ display:flex; align-items:center; gap:6px; padding-top:12px; border-top:1px solid var(--gray-100); font-size:0.78rem; font-weight:600; color:#4B5563; }
+  .rp-foot .icon{ width:14px; height:14px; color:var(--emerald-600); }
+
+  /* ---------- WHAT YOU GET ---------- */
+  .grid-3-gap{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .get-item{ display:flex; align-items:flex-start; gap:16px; padding:24px; border-radius:16px; background:#F9FAFB; border:1px solid var(--gray-100); }
+  .get-item .emoji{ font-size:1.5rem; line-height:1; }
+  .get-item h3{ font-size:1rem; font-weight:700; color:var(--gray-900); margin-bottom:4px; }
+  .get-item p{ font-size:0.9rem; color:var(--gray-600); }
+
+  /* ---------- TIPS ---------- */
+  .grid-5{ display:grid; grid-template-columns:repeat(5,1fr); gap:24px; }
+  .tip-card{ background:#fff; padding:24px; border-radius:16px; border:1px solid var(--gray-100); box-shadow:var(--shadow-soft); }
+  .tip-icon{ width:40px; height:40px; border-radius:12px; background:var(--emerald-50); color:var(--emerald-800); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+  .tip-icon .icon{ width:20px; height:20px; }
+  .tip-card h3{ font-size:0.98rem; font-weight:700; color:var(--gray-900); margin-bottom:8px; }
+  .tip-card p{ font-size:0.82rem; color:var(--gray-600); }
+
+  /* ---------- OFERTA ---------- */
+  .offer-box{
+    background:linear-gradient(to bottom right, var(--brand-dark), var(--brand-olive));
+    border-radius:28px; padding:56px 48px; text-align:center; color:#fff;
+    box-shadow:var(--shadow-card); border:4px solid rgba(255,255,255,0.1); position:relative; overflow:hidden;
+  }
+  .offer-badge{
+    display:inline-block; background:var(--brand-accent); color:#fff; font-size:0.72rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:0.1em; padding:8px 18px; border-radius:100px; margin-bottom:24px;
+  }
+  .offer-box h2{ font-size:clamp(2rem,3.6vw,2.8rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:12px; }
+  .offer-box > p.tagline{ color:var(--emerald-100); font-size:1.1rem; max-width:36ch; margin:0 auto 32px; }
+  .price-card{
+    background:rgba(255,255,255,0.1); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2);
+    border-radius:16px; padding:26px; max-width:340px; margin:0 auto 32px;
+  }
+  .price-card .label{ display:block; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:#D1D5DB; font-weight:700; margin-bottom:6px; }
+  .price-row{ display:flex; align-items:baseline; justify-content:center; gap:4px; }
+  .price-row .cur{ font-size:1.5rem; font-weight:700; }
+  .price-row .amt{ font-size:3.2rem; font-weight:800; letter-spacing:-0.02em; }
+  .price-card .note{ display:block; font-size:0.75rem; color:var(--emerald-200); font-weight:600; margin-top:10px; }
+  .offer-box .btn{ width:100%; max-width:340px; margin:0 auto; font-size:1.1rem; padding:18px 32px; }
+  .offer-box .fine{ margin-top:16px; font-size:0.75rem; color:#D1D5DB; font-weight:500; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{ display:flex; flex-direction:column; gap:16px; }
+  details{ background:#fff; border:1px solid var(--gray-200); border-radius:16px; box-shadow:var(--shadow-soft); overflow:hidden; }
+  summary{
+    display:flex; align-items:center; justify-content:space-between; padding:22px 24px;
+    font-size:1.02rem; font-weight:700; color:var(--brand-dark); cursor:pointer; list-style:none;
+  }
+  summary::-webkit-details-marker{ display:none; }
+  summary .icon{ color:#6B7280; transition:transform .25s ease; flex-shrink:0; }
+  details[open] summary .icon{ transform:rotate(180deg); }
+  details .faq-body{ padding:0 24px 22px; border-top:1px solid var(--gray-100); padding-top:16px; font-size:0.95rem; color:var(--gray-600); line-height:1.6; }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{ text-align:center; }
+  .final-cta h2{ font-size:clamp(1.9rem,3.4vw,2.8rem); font-weight:800; color:var(--brand-dark); letter-spacing:-0.02em; margin-bottom:16px; line-height:1.2; }
+  .final-cta > p{ font-size:1.1rem; color:var(--gray-600); margin-bottom:32px; max-width:44ch; margin-left:auto; margin-right:auto; }
+  .final-cta .fine{ margin-top:16px; font-size:0.78rem; color:#6B7280; font-weight:500; }
+
+  footer{ background:#F9FAFB; border-top:1px solid var(--gray-200); padding:40px 0; text-align:center; }
+  footer p{ font-size:0.78rem; color:#6B7280; margin-bottom:6px; }
+
+  @media (max-width:960px){
+    .grid-4, .grid-5, .cat-grid, .ebook-grid, .rapidez-grid, .hero-grid, .grid-3, .grid-3-gap{ grid-template-columns:1fr 1fr; }
+    .cat-block.span-2{ grid-column:1 / -1; }
+  }
+  @media (max-width:760px){
+    .hero{ padding:130px 0 70px; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .mockup-wrap{ order:-1; margin-bottom:8px; }
+    .grid-4, .grid-5, .cat-grid, .ebook-grid, .rapidez-grid, .grid-3, .grid-3-gap{ grid-template-columns:1fr; }
+    .cat-two-col{ grid-template-columns:1fr; }
+    section{ padding:56px 0; }
+    .offer-box{ padding:40px 24px; }
+    .container, .container-4xl, .container-3xl{ padding:0 20px; }
+  }
+  :focus-visible{ outline:2.5px solid var(--brand-accent); outline-offset:2px; }
+</style>
 </head>
-<body class="font-sans antialiased text-gray-800 bg-[#F8F9FA]">
+<body>
 
-  <!-- ==================== HEADER / NAV ==================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-2">
-        <span class="text-xl font-extrabold tracking-tight text-brand-dark">30 RECETAS <span class="text-brand-accent">KETO</span></span>
-      </a>
-
-      <!-- Menú Desktop -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#hero" class="text-sm font-semibold text-gray-600 hover:text-brand-dark transition-colors">Inicio</a>
-        <a href="#ebook" class="text-sm font-semibold text-gray-600 hover:text-brand-dark transition-colors">El Ebook</a>
-        <a href="#recetas" class="text-sm font-semibold text-gray-600 hover:text-brand-dark transition-colors">Recetas</a>
-        <a href="#rapidez" class="text-sm font-semibold text-gray-600 hover:text-brand-dark transition-colors">Beneficios</a>
-        <a href="#faq" class="text-sm font-semibold text-gray-600 hover:text-brand-dark transition-colors">Preguntas frecuentes</a>
-      </nav>
-
-      <div class="hidden md:flex items-center">
-        <a href="#oferta" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-bold text-sm shadow-glow transition-all duration-200 transform hover:-translate-y-0.5">
-          COMPRAR AHORA
-        </a>
-      </div>
-
-      <!-- Botón Móvil -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-brand-dark focus:outline-none" aria-label="Abrir menú" aria-expanded="false">
-        <i data-lucide="menu" class="w-6 h-6"></i>
-      </button>
+<header class="site">
+  <div class="container nav-row">
+    <a href="#hero" class="logo">30 RECETAS <span>KETO</span></a>
+    <nav class="nav-links">
+      <a href="#hero">Inicio</a>
+      <a href="#ebook">El Ebook</a>
+      <a href="#recetas">Recetas</a>
+      <a href="#rapidez">Beneficios</a>
+      <a href="#faq">Preguntas frecuentes</a>
+    </nav>
+    <div class="nav-cta-desktop">
+      <a href="#oferta" class="btn btn-pill">COMPRAR AHORA</a>
     </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero">Inicio</a>
+    <a href="#ebook">El Ebook</a>
+    <a href="#recetas">Recetas</a>
+    <a href="#rapidez">Beneficios</a>
+    <a href="#faq">Preguntas frecuentes</a>
+    <a href="#oferta" class="btn">COMPRAR AHORA</a>
+  </div>
+</header>
 
-    <!-- Menú Móvil Desplegable -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3">
-      <a href="#hero" class="mobile-link block py-2 text-base font-semibold text-gray-700">Inicio</a>
-      <a href="#ebook" class="mobile-link block py-2 text-base font-semibold text-gray-700">El Ebook</a>
-      <a href="#recetas" class="mobile-link block py-2 text-base font-semibold text-gray-700">Recetas</a>
-      <a href="#rapidez" class="mobile-link block py-2 text-base font-semibold text-gray-700">Beneficios</a>
-      <a href="#faq" class="mobile-link block py-2 text-base font-semibold text-gray-700">Preguntas frecuentes</a>
-      <a href="#oferta" class="mobile-link block w-full text-center py-3 rounded-xl bg-brand-accent text-white font-bold shadow-glow">
-        COMPRAR AHORA
-      </a>
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge-pill">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          Ebook Digital Completo
+        </div>
+        <h1>30 RECETAS KETO<br>EN 20 MINUTOS</h1>
+        <p class="hero-sub">Comé rico, comé sano y prepará comidas keto deliciosas sin pasar horas en la cocina.</p>
+        <div class="hero-tag">✨ 30 recetas fáciles + rápidas + bajas en carbohidratos</div>
+        <div class="hero-actions">
+          <a href="#oferta" class="btn">QUIERO MI EBOOK</a>
+        </div>
+        <div class="hero-note">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+          <span>Acceso digital inmediato</span>
+        </div>
+      </div>
+
+      <div class="mockup-wrap">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="mockup">
+          <div class="mockup-inner">
+            <div class="mockup-top"><span>Edición Digital</span><span>PDF</span></div>
+            <div class="mockup-mid">
+              <div class="mockup-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h1v11"/><path d="M7 2v9"/><path d="M11 2v9"/><path d="M21 2c-2.5 0-5 2-5 6v6h2v8"/></svg>
+              </div>
+              <span class="big">30 RECETAS<br><span>KETO</span></span>
+              <span class="small">En 20 Minutos</span>
+            </div>
+            <div class="mockup-bottom">Desayunos · Almuerzos · Cenas · Snacks · Postres</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <!-- ==================== 1. HERO PRINCIPAL ==================== -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-[#EFF3F0] to-[#F8F9FA]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          <!-- Columna Izquierda -->
-          <div class="lg:col-span-7 flex flex-col items-start text-left">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-dark/5 border border-brand-dark/10 text-brand-olive text-xs sm:text-sm font-semibold mb-6">
-              <i data-lucide="book-open" class="w-4 h-4 text-brand-accent"></i> Ebook Digital Completo
-            </div>
-
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark tracking-tight leading-[1.1] mb-4">
-              30 RECETAS KETO<br class="hidden sm:inline" /> EN 20 MINUTOS
-            </h1>
-
-            <p class="text-lg sm:text-xl font-semibold text-brand-olive mb-3">
-              Comé rico, comé sano y prepará comidas keto deliciosas sin pasar horas en la cocina.
-            </p>
-
-            <div class="inline-block bg-white/80 border border-emerald-100 rounded-lg px-3 py-1.5 text-xs sm:text-sm font-bold text-emerald-800 mb-8 shadow-sm">
-              ✨ 30 recetas fáciles + rápidas + bajas en carbohidratos
-            </div>
-
-            <div class="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-4">
-              <a href="#oferta" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-white font-bold text-lg shadow-glow transition-all duration-200 transform hover:-translate-y-0.5">
-                QUIERO MI EBOOK
-              </a>
-            </div>
-
-            <div class="flex items-center gap-2 mt-4 text-xs sm:text-sm text-gray-500 font-medium">
-              <i data-lucide="zap" class="w-4 h-4 text-brand-accent"></i>
-              <span>Acceso digital inmediato</span>
-            </div>
-          </div>
-
-          <!-- Columna Derecha (Mockup / Visual) -->
-          <div class="lg:col-span-5 flex justify-center relative">
-            <div class="relative w-full max-w-sm sm:max-w-md">
-              <div class="absolute -top-6 -left-6 w-32 h-32 bg-emerald-100 rounded-full blur-2xl opacity-60"></div>
-              <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-orange-100 rounded-full blur-2xl opacity-60"></div>
-              
-              <!-- Mockup Ebook Card -->
-              <div class="relative bg-brand-dark rounded-2xl p-6 sm:p-8 text-white shadow-card hero-mockup-shadow border-4 border-white/20">
-                <div class="border-2 border-dashed border-white/30 rounded-xl p-6 flex flex-col items-center justify-between min-h-[380px] bg-gradient-to-br from-brand-dark to-brand-olive text-center">
-                  <div class="w-full flex justify-between items-center text-xs tracking-widest text-emerald-300 uppercase font-semibold">
-                    <span>Edición Digital</span>
-                    <span>PDF</span>
-                  </div>
-                  
-                  <div class="my-auto py-6">
-                    <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                      <i data-lucide="utensils" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <span class="block text-2xl sm:text-3xl font-extrabold tracking-tight mb-2 leading-tight">30 RECETAS<br><span class="text-brand-accent">KETO</span></span>
-                    <span class="block text-sm sm:text-base font-semibold text-emerald-200">En 20 Minutos</span>
-                  </div>
-
-                  <div class="w-full pt-4 border-t border-white/20 text-xs text-gray-200 font-medium">
-                    Desayunos · Almuerzos · Cenas · Snacks · Postres
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+  <!-- PROBLEMA -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="sec-head">
+        <h2>¿Te cuesta comer keto cuando no tenés tiempo?</h2>
+        <p>Mantener un estilo de vida saludable no debería significar pasar horas encerrado en la cocina.</p>
+      </div>
+      <div class="grid-4">
+        <div class="prob-card">
+          <div class="prob-icon" style="background:#FEF2F2; color:#DC2626;">⏰</div>
+          <h3>No tenés tiempo para cocinar</h3>
+          <p>Llegás con el día justo y preparar platos elaborados se vuelve una carga diaria insostenible.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon" style="background:#FFF7ED; color:#EA580C;">🍽️</div>
+          <h3>Terminás comiendo siempre lo mismo</h3>
+          <p>La falta de opciones prácticas te lleva a la monotonía y a perder el entusiasmo por tu alimentación.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon" style="background:#FEFCE8; color:#CA8A04;">🥗</div>
+          <h3>No sabés qué preparar</h3>
+          <p>Abrís la heladera y la indecisión te hace perder minutos valiosos buscando opciones aptas.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon" style="background:#FFF1F2; color:#E11D48;">😩</div>
+          <h3>Las recetas complicadas te hacen abandonar</h3>
+          <p>Ingredientes difíciles o procesos interminables terminan alejándote de tus objetivos.</p>
         </div>
       </div>
-    </section>
-
-    <!-- ==================== 2. SECCIÓN DEL PROBLEMA ==================== -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
-            ¿Te cuesta comer keto cuando no tenés tiempo?
-          </h2>
-          <p class="text-lg text-gray-600">
-            Mantener un estilo de vida saludable no debería significar pasar horas encerrado en la cocina.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <!-- Card Problema 1 -->
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col items-start hover:shadow-soft transition-all duration-300">
-            <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">⏰</div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">No tenés tiempo para cocinar</h3>
-            <p class="text-sm text-gray-600">Llegás con el día justo y preparar platos elaborados se vuelve una carga diaria insostenible.</p>
-          </div>
-
-          <!-- Card Problema 2 -->
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col items-start hover:shadow-soft transition-all duration-300">
-            <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">🍽️</div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">Terminás comiendo siempre lo mismo</h3>
-            <p class="text-sm text-gray-600">La falta de opciones prácticas te lleva a la monotonía y a perder el entusiasmo por tu alimentación.</p>
-          </div>
-
-          <!-- Card Problema 3 -->
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col items-start hover:shadow-soft transition-all duration-300">
-            <div class="w-12 h-12 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">🥗</div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">No sabés qué preparar</h3>
-            <p class="text-sm text-gray-600">Abrís la heladera y la indecisión te hace perder minutos valiosos buscando opciones aptas.</p>
-          </div>
-
-          <!-- Card Problema 4 -->
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col items-start hover:shadow-soft transition-all duration-300">
-            <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">😩</div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">Las recetas complicadas te hacen abandonar</h3>
-            <p class="text-sm text-gray-600">Ingredientes difíciles o procesos interminables terminan alejándote de tus objetivos.</p>
-          </div>
-        </div>
-
-        <!-- Solución Box -->
-        <div class="max-w-4xl mx-auto bg-[#EFF3F0] border border-emerald-100 rounded-2xl p-6 sm:p-8 text-center shadow-soft">
-          <p class="text-lg sm:text-xl font-bold text-brand-dark leading-relaxed">
-            Con este ebook tenés <span class="text-brand-accent">30 ideas prácticas</span> para preparar comidas keto deliciosas en 20 minutos o menos.
-          </p>
-        </div>
+      <div class="solution-box">
+        <p>Con este ebook tenés <span>30 ideas prácticas</span> para preparar comidas keto deliciosas en 20 minutos o menos.</p>
       </div>
-    </section>
-
-    <!-- ==================== 3. PRESENTACIÓN DEL EBOOK ==================== -->
-    <section id="ebook" class="py-20 bg-brand-light">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
-            Todo lo que necesitás para empezar a preparar recetas keto más fácilmente
-          </h2>
-          <p class="text-lg text-gray-600">
-            Una estructura simple, clara y visualmente pensada para que abras el libro digital y cocines al instante.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <!-- Vista de páginas / Resumen visual -->
-          <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-card">
-            <div class="space-y-4">
-              <div class="flex items-center gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-accent flex-shrink-0"></i>
-                <span class="font-bold text-gray-800 text-sm sm:text-base">30 recetas seleccionadas</span>
-              </div>
-              <div class="flex items-center gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-accent flex-shrink-0"></i>
-                <span class="font-bold text-gray-800 text-sm sm:text-base">Preparaciones de hasta 20 minutos</span>
-              </div>
-              <div class="flex items-center gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-accent flex-shrink-0"></i>
-                <span class="font-bold text-gray-800 text-sm sm:text-base">Ingredientes simples y accesibles</span>
-              </div>
-              <div class="flex items-center gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-accent flex-shrink-0"></i>
-                <span class="font-bold text-gray-800 text-sm sm:text-base">Pasos fáciles de seguir y tips prácticos</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Categorías cubiertas -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft">
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand-olive flex items-center justify-center font-bold mb-3">🍳</div>
-              <h3 class="font-bold text-brand-dark text-base mb-1">Desayunos</h3>
-              <p class="text-xs text-gray-500">Opciones energéticas para arrancar el día.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft">
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand-olive flex items-center justify-center font-bold mb-3">🥗</div>
-              <h3 class="font-bold text-brand-dark text-base mb-1">Almuerzos</h3>
-              <p class="text-xs text-gray-500">Platos frescos, balanceados y rápidos.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft">
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand-olive flex items-center justify-center font-bold mb-3">🥩</div>
-              <h3 class="font-bold text-brand-dark text-base mb-1">Cenas</h3>
-              <p class="text-xs text-gray-500">Comidas nutritivas sin pasar horas en la cocina.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft">
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand-olive flex items-center justify-center font-bold mb-3">🥑</div>
-              <h3 class="font-bold text-brand-dark text-base mb-1">Guarniciones y snacks</h3>
-              <p class="text-xs text-gray-500">Acompañamientos y bocados prácticos.</p>
-            </div>
-
-            <div class="sm:col-span-2 bg-white p-6 rounded-2xl border border-gray-100 shadow-soft">
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand-olive flex items-center justify-center font-bold mb-3">🍫</div>
-              <h3 class="font-bold text-brand-dark text-base mb-1">Postres y bebidas</h3>
-              <p class="text-xs text-gray-500">Alternativas bajas en carbohidratos para disfrutar sin salir de cetosis.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 4. MOSTRAR EL CONTENIDO (30 RECETAS) ==================== -->
-    <section id="recetas" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
-            Las 30 recetas incluidas en el ebook
-          </h2>
-          <p class="text-lg text-gray-600">
-            Cada una pensada para resolver tus comidas con ingredientes reales y tiempos reducidos.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <!-- Categoría 1: Desayunos -->
-          <div class="bg-[#F8F9FA] rounded-3xl p-6 border border-gray-100 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="px-3 py-1 rounded-full bg-brand-olive text-white text-xs font-bold uppercase tracking-wider">Desayunos</span>
-              </div>
-              <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Tortilla de queso y espinacas</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Huevos revueltos con aguacate</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Panqueques keto de almendras</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Bowl de yogur griego con nueces</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Omelette de jamón y queso crema</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Huevos en canasta de tocino</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Categoría 2: Almuerzos -->
-          <div class="bg-[#F8F9FA] rounded-3xl p-6 border border-gray-100 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="px-3 py-1 rounded-full bg-brand-olive text-white text-xs font-bold uppercase tracking-wider">Almuerzos</span>
-              </div>
-              <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Ensalada César con pollo grillado</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Bowl de atún con palta y huevo</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Wraps de lechuga con carne molida</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Sopa de pollo con crema</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Ensalada de salmón ahumado</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Zucchini relleno de queso y carne</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Categoría 3: Cenas -->
-          <div class="bg-[#F8F9FA] rounded-3xl p-6 border border-gray-100 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="px-3 py-1 rounded-full bg-brand-olive text-white text-xs font-bold uppercase tracking-wider">Cenas</span>
-              </div>
-              <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Pollo a la manteca con ajo</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Salmón al horno con limón</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Medallones de carne con chimichurri</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Brochetas de pollo con pimiento</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Costillas de cerdo al horno rápidas</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Milanesa de pollo con costra de almendras</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Categoría 4: Guarniciones y Snacks -->
-          <div class="bg-[#F8F9FA] rounded-3xl p-6 border border-gray-100 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="px-3 py-1 rounded-full bg-brand-olive text-white text-xs font-bold uppercase tracking-wider">Guarniciones y Snacks</span>
-              </div>
-              <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Puré de coliflor cremoso</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Brócoli salteado con manteca y ajo</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Chips de queso al horno</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Guacamole clásico</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Palmitos gratinados</li>
-                <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Berenjenas a la parmesana keto</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Categoría 5: Postres y Bebidas -->
-          <div class="bg-[#F8F9FA] rounded-3xl p-6 border border-gray-100 flex flex-col justify-between md:col-span-2 lg:col-span-2">
-            <div>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="px-3 py-1 rounded-full bg-brand-olive text-white text-xs font-bold uppercase tracking-wider">Postres y Bebidas</span>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                  <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Mousse de chocolate negro</li>
-                  <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Cheesecake en vaso sin horno</li>
-                  <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Trufas de coco y almendras</li>
-                </ul>
-                <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                  <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Smoothie verde energizante</li>
-                  <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Café bulletproof</li>
-                  <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i> Helado rápido de frutillas</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 5. BENEFICIO PRINCIPAL: RAPIDEZ ==================== -->
-    <section id="rapidez" class="py-20 bg-brand-dark text-white relative overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <div class="lg:col-span-4 flex justify-center">
-            <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-dashed border-brand-accent/50 flex flex-col items-center justify-center bg-white/5 backdrop-blur-md">
-              <i data-lucide="timer" class="w-10 h-10 text-brand-accent mb-2"></i>
-              <span class="text-4xl sm:text-5xl font-extrabold tracking-tight">20</span>
-              <span class="text-xs uppercase tracking-widest text-gray-300 font-semibold mt-1">Minutos o menos</span>
-            </div>
-          </div>
-
-          <div class="lg:col-span-8 text-left">
-            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-              Comé keto sin pasar horas en la cocina
-            </h2>
-            <p class="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
-              Todas las recetas del ebook están diseñadas para prepararse en 20 minutos o menos, utilizando ingredientes accesibles y pasos simples.
-            </p>
-
-            <a href="#oferta" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-white font-bold text-base sm:text-lg shadow-glow transition-all duration-200 transform hover:-translate-y-0.5">
-              QUIERO PREPARAR RECETAS KETO EN 20 MINUTOS
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 6. PREVIEW DE RECETAS ==================== -->
-    <section class="py-20 bg-[#F8F9FA]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
-            Un vistazo a las preparaciones
-          </h2>
-          <p class="text-lg text-gray-600">
-            Comidas reales, balanceadas y diseñadas para adaptarse a tu ritmo diario.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Preview 1 -->
-          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-xs font-bold">Keto: Sí</span>
-                <span class="flex items-center text-xs font-semibold text-gray-500"><i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-brand-accent"></i> 15 min</span>
-              </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-1">Tortilla de Queso y Espinacas</h3>
-              <p class="text-xs text-gray-500 mb-4">Porciones: 1 persona</p>
-            </div>
-            <div class="pt-3 border-t border-gray-100 text-xs text-gray-600 font-medium flex items-center gap-1">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Desayuno rápido y nutritivo
-            </div>
-          </div>
-
-          <!-- Preview 2 -->
-          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-xs font-bold">Keto: Sí</span>
-                <span class="flex items-center text-xs font-semibold text-gray-500"><i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-brand-accent"></i> 20 min</span>
-              </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-1">Panqueques Keto de Almendras</h3>
-              <p class="text-xs text-gray-500 mb-4">Porciones: 2 personas</p>
-            </div>
-            <div class="pt-3 border-t border-gray-100 text-xs text-gray-600 font-medium flex items-center gap-1">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Masa con harina de almendras
-            </div>
-          </div>
-
-          <!-- Preview 3 -->
-          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-xs font-bold">Keto: Sí</span>
-                <span class="flex items-center text-xs font-semibold text-gray-500"><i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-brand-accent"></i> 20 min</span>
-              </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-1">Ensalada César con Pollo Grillado</h3>
-              <p class="text-xs text-gray-500 mb-4">Porciones: 2 personas</p>
-            </div>
-            <div class="pt-3 border-t border-gray-100 text-xs text-gray-600 font-medium flex items-center gap-1">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Con aderezo casero
-            </div>
-          </div>
-
-          <!-- Preview 4 -->
-          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-xs font-bold">Keto: Sí</span>
-                <span class="flex items-center text-xs font-semibold text-gray-500"><i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-brand-accent"></i> 20 min</span>
-              </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-1">Pollo a la Manteca con Ajo</h3>
-              <p class="text-xs text-gray-500 mb-4">Porciones: 2 personas</p>
-            </div>
-            <div class="pt-3 border-t border-gray-100 text-xs text-gray-600 font-medium flex items-center gap-1">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Cocción jugosa en sartén
-            </div>
-          </div>
-
-          <!-- Preview 5 -->
-          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-xs font-bold">Keto: Sí</span>
-                <span class="flex items-center text-xs font-semibold text-gray-500"><i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-brand-accent"></i> 15 min</span>
-              </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-1">Chips de Queso al Horno</h3>
-              <p class="text-xs text-gray-500 mb-4">Porciones: 2 personas</p>
-            </div>
-            <div class="pt-3 border-t border-gray-100 text-xs text-gray-600 font-medium flex items-center gap-1">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Snack crocante y simple
-            </div>
-          </div>
-
-          <!-- Preview 6 -->
-          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-xs font-bold">Keto: Sí</span>
-                <span class="flex items-center text-xs font-semibold text-gray-500"><i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-brand-accent"></i> 10 min + congelado</span>
-              </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-1">Helado Rápido de Frutillas</h3>
-              <p class="text-xs text-gray-500 mb-4">Porciones: 3 personas</p>
-            </div>
-            <div class="pt-3 border-t border-gray-100 text-xs text-gray-600 font-medium flex items-center gap-1">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Textura cremosa sin azúcar agregada
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 7. ¿QUÉ RECIBÍS? ==================== -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
-            ¿Qué recibís exactamente con tu compra?
-          </h2>
-          <p class="text-lg text-gray-600">
-            Un recurso digital directo, práctico y listo para consultar en cualquier momento.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <div class="flex items-start gap-4 p-6 rounded-2xl bg-gray-50 border border-gray-100">
-            <span class="text-2xl">📕</span>
-            <div>
-              <h3 class="font-bold text-gray-900 text-base mb-1">Ebook digital “30 Recetas Keto en 20 Minutos”</h3>
-              <p class="text-sm text-gray-600">El libro completo en formato PDF listo para descargar.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 rounded-2xl bg-gray-50 border border-gray-100">
-            <span class="text-2xl">🥑</span>
-            <div>
-              <h3 class="font-bold text-gray-900 text-base mb-1">30 recetas keto</h3>
-              <p class="text-sm text-gray-600">Selección completa de desayunos, platos principales, snacks y postres.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 rounded-2xl bg-gray-50 border border-gray-100">
-            <span class="text-2xl">⏱️</span>
-            <div>
-              <h3 class="font-bold text-gray-900 text-base mb-1">Recetas rápidas</h3>
-              <p class="text-sm text-gray-600">Todas pensadas para elaborarse en 20 minutos o menos.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 rounded-2xl bg-gray-50 border border-gray-100">
-            <span class="text-2xl">📱</span>
-            <div>
-              <h3 class="font-bold text-gray-900 text-base mb-1">Formato digital multidispositivo</h3>
-              <p class="text-sm text-gray-600">Para consultar cómodamente desde celular, tablet o computadora.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 rounded-2xl bg-gray-50 border border-gray-100">
-            <span class="text-2xl">🍳</span>
-            <div>
-              <h3 class="font-bold text-gray-900 text-base mb-1">Ingredientes y pasos claros</h3>
-              <p class="text-sm text-gray-600">Cantidades exactas, instrucciones paso a paso y tips de preparación.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 p-6 rounded-2xl bg-gray-50 border border-gray-100">
-            <span class="text-2xl">🚀</span>
-            <div>
-              <h3 class="font-bold text-gray-900 text-base mb-1">Acceso inmediato</h3>
-              <p class="text-sm text-gray-600">Descargá tu copia digital apenas se confirme la compra.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 8. SECCIÓN DE ORGANIZACIÓN Y PRACTICIDAD ==================== -->
-    <section class="py-20 bg-brand-light">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
-            Tu cocina puede ser mucho más simple
-          </h2>
-          <p class="text-lg text-gray-600">
-            Consejos prácticos incluidos en el ebook para mantener la constancia en tu día a día.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-          
-          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft text-left flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold mb-4">
-                <i data-lucide="package-check" class="w-5 h-5"></i>
-              </div>
-              <h3 class="font-bold text-gray-900 text-base mb-2">Organizá tu despensa</h3>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Tener a mano huevos, quesos, verduras y grasas saludables te permite resolver comidas sin complicaciones.
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft text-left flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold mb-4">
-                <i data-lucide="droplet" class="w-5 h-5"></i>
-              </div>
-              <h3 class="font-bold text-gray-900 text-base mb-2">Hidratación clave</h3>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Tomar suficiente agua y sumar electrolitos ayuda a sentirte con energía en el día a día.
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft text-left flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold mb-4">
-                <i data-lucide="calendar" class="w-5 h-5"></i>
-              </div>
-              <h3 class="font-bold text-gray-900 text-base mb-2">Meal prep</h3>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Adelantar la cocción de algunas proteínas te permite armar recetas en cuestión de minutos.
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft text-left flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold mb-4">
-                <i data-lucide="file-search" class="w-5 h-5"></i>
-              </div>
-              <h3 class="font-bold text-gray-900 text-base mb-2">Leé etiquetas</h3>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Controlar los carbohidratos netos en alimentos envasados evita azúcares ocultos.
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft text-left flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold mb-4">
-                <i data-lucide="sparkles" class="w-5 h-5"></i>
-              </div>
-              <h3 class="font-bold text-gray-900 text-base mb-2">Variá las verduras</h3>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Zucchini, brócoli, coliflor y espinaca aportan variedad y textura a tus preparaciones.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 9. OFERTA DE COMPRA ==================== -->
-    <section id="oferta" class="py-20 bg-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="bg-gradient-to-br from-brand-dark to-brand-olive rounded-3xl p-8 sm:p-12 text-white shadow-card text-center relative overflow-hidden border-4 border-white/10">
-          
-          <span class="inline-block px-4 py-1.5 rounded-full bg-brand-accent text-white text-xs font-bold uppercase tracking-wider mb-6">
-            EBOOK DIGITAL
-          </span>
-
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">
-            Empezá hoy a preparar tus propias recetas keto
-          </h2>
-          <p class="text-lg text-emerald-100 mb-8 max-w-xl mx-auto">
-            30 RECETAS KETO EN 20 MINUTOS
-          </p>
-
-          <!-- Bloque de Precio Editable -->
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 max-w-md mx-auto mb-8 border border-white/20">
-            <span class="block text-xs uppercase tracking-widest text-gray-300 font-semibold mb-1">Precio Final</span>
-            
-            <!-- Variables de Precio Editables -->
-            <div class="flex items-baseline justify-center gap-1">
-              <span class="text-2xl font-bold text-white" id="currency-symbol">$</span>
-              <span class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight" id="product-price">XX.XX</span>
-            </div>
-            
-            <span class="block text-xs text-emerald-200 mt-2 font-medium" id="payment-note">Pago único · Sin suscripciones</span>
-          </div>
-
-          <!-- Botón de Pago / Checkout -->
-          <div class="max-w-md mx-auto">
-            <a id="checkout-button" href="URL_DE_CHECKOUT_AQUI" class="w-full inline-flex items-center justify-center px-8 py-5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-white font-bold text-xl shadow-glow transition-all duration-200 transform hover:-translate-y-0.5">
-              QUIERO MI EBOOK
-            </a>
-            
-            <p class="mt-4 text-xs text-gray-300 font-medium">
-              Compra segura · Producto digital · Acceso inmediato
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== 10. PREGUNTAS FRECUENTES ==================== -->
-    <section id="faq" class="py-20 bg-brand-light">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
-            Preguntas Frecuentes
-          </h2>
-          <p class="text-lg text-gray-600">
-            Respuestas claras sobre el contenido y formato del ebook.
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          
-          <details class="group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-soft">
-            <summary class="flex justify-between items-center p-6 text-base sm:text-lg font-bold text-brand-dark cursor-pointer list-none">
-              <span>¿Qué recibo al comprar?</span>
-              <span class="transition-transform duration-300 group-open:rotate-180">
-                <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500"></i>
-              </span>
-            </summary>
-            <div class="px-6 pb-6 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-              Recibís acceso digital inmediato para descargar el ebook completo "30 Recetas Keto en 20 Minutos" en formato PDF.
-            </div>
-          </details>
-
-          <details class="group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-soft">
-            <summary class="flex justify-between items-center p-6 text-base sm:text-lg font-bold text-brand-dark cursor-pointer list-none">
-              <span>¿Es un ebook digital?</span>
-              <span class="transition-transform duration-300 group-open:rotate-180">
-                <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500"></i>
-              </span>
-            </summary>
-            <div class="px-6 pb-6 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-              Sí, es un libro en formato digital (PDF), lo que te permite empezar a leerlo y usarlo de inmediato sin esperar envíos físicos.
-            </div>
-          </details>
-
-          <details class="group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-soft">
-            <summary class="flex justify-between items-center p-6 text-base sm:text-lg font-bold text-brand-dark cursor-pointer list-none">
-              <span>¿Cuántas recetas incluye?</span>
-              <span class="transition-transform duration-300 group-open:rotate-180">
-                <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500"></i>
-              </span>
-            </summary>
-            <div class="px-6 pb-6 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-              Incluye exactamente 30 recetas divididas en desayunos, almuerzos, cenas, guarniciones, snacks, postres y bebidas.
-            </div>
-          </details>
-
-          <details class="group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-soft">
-            <summary class="flex justify-between items-center p-6 text-base sm:text-lg font-bold text-brand-dark cursor-pointer list-none">
-              <span>¿Las recetas son rápidas?</span>
-              <span class="transition-transform duration-300 group-open:rotate-180">
-                <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500"></i>
-              </span>
-            </summary>
-            <div class="px-6 pb-6 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-              Sí, todas las preparaciones están diseñadas para estar listas en 20 minutos o menos, con pasos sencillos e ingredientes accesibles.
-            </div>
-          </details>
-
-          <details class="group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-soft">
-            <summary class="flex justify-between items-center p-6 text-base sm:text-lg font-bold text-brand-dark cursor-pointer list-none">
-              <span>¿Puedo verlo desde mi celular?</span>
-              <span class="transition-transform duration-300 group-open:rotate-180">
-                <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500"></i>
-              </span>
-            </summary>
-            <div class="px-6 pb-6 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-              Sí, podés abrirlo y consultarlo cómodamente desde tu celular, tablet o computadora cada vez que cocines.
-            </div>
-          </details>
-
-          <details class="group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-soft">
-            <summary class="flex justify-between items-center p-6 text-base sm:text-lg font-bold text-brand-dark cursor-pointer list-none">
-              <span>¿Qué tipo de recetas incluye?</span>
-              <span class="transition-transform duration-300 group-open:rotate-180">
-                <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500"></i>
-              </span>
-            </summary>
-            <div class="px-6 pb-6 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-              Incluye opciones de Desayunos (como panqueques de almendras y tortillas), Almuerzos (ensaladas, wraps, sopas), Cenas (carnes, pollo, salmón), Guarniciones y Snacks (chips de queso, guacamole) y Postres/Bebidas (mousse, café bulletproof, helado rápido).
-            </div>
-          </details>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 11. CTA FINAL ==================== -->
-    <section class="py-20 bg-white text-center">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight mb-4 leading-tight">
-          30 recetas. Menos complicaciones.<br />Más opciones para disfrutar tu cocina.
-        </h2>
-        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          Descubrí nuevas ideas para preparar comidas keto fáciles, rápidas y deliciosas.
-        </p>
-
-        <a href="#oferta" class="inline-flex items-center justify-center px-10 py-5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-white font-bold text-lg sm:text-xl shadow-glow transition-all duration-200 transform hover:-translate-y-0.5">
-          QUIERO MI EBOOK AHORA
-        </a>
-
-        <p class="mt-4 text-xs text-gray-500 font-medium">
-          Acceso digital inmediato
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="bg-gray-50 border-t border-gray-200 py-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-gray-500 space-y-2">
-      <p>© 30 Recetas Keto en 20 Minutos. Todos los derechos reservados.</p>
-      <p>Producto digital en formato PDF. Entrega inmediata tras completar la compra.</p>
     </div>
-  </footer>
+  </section>
 
-  <!-- ==================== SCRIPTS ==================== -->
-  <script>
-    // Inicializar Iconos Lucide de forma segura.
-    if (window.lucide) {
-      lucide.createIcons();
-    }
+  <!-- PRESENTACIÓN DEL EBOOK -->
+  <section class="bg-light" id="ebook">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Todo lo que necesitás para empezar a preparar recetas keto más fácilmente</h2>
+        <p>Una estructura simple, clara y visualmente pensada para que abras el libro digital y cocines al instante.</p>
+      </div>
+      <div class="ebook-grid">
+        <div class="check-card">
+          <div class="check-item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span>30 recetas seleccionadas</span></div>
+          <div class="check-item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span>Preparaciones de hasta 20 minutos</span></div>
+          <div class="check-item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span>Ingredientes simples y accesibles</span></div>
+          <div class="check-item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span>Pasos fáciles de seguir y tips prácticos</span></div>
+        </div>
+        <div class="cat-mini-grid">
+          <div class="cat-mini"><div class="cat-mini-icon">🍳</div><h3>Desayunos</h3><p>Opciones energéticas para arrancar el día.</p></div>
+          <div class="cat-mini"><div class="cat-mini-icon">🥗</div><h3>Almuerzos</h3><p>Platos frescos, balanceados y rápidos.</p></div>
+          <div class="cat-mini"><div class="cat-mini-icon">🥩</div><h3>Cenas</h3><p>Comidas nutritivas sin pasar horas en la cocina.</p></div>
+          <div class="cat-mini"><div class="cat-mini-icon">🥑</div><h3>Guarniciones y snacks</h3><p>Acompañamientos y bocados prácticos.</p></div>
+          <div class="cat-mini span-2"><div class="cat-mini-icon">🍫</div><h3>Postres y bebidas</h3><p>Alternativas bajas en carbohidratos para disfrutar sin salir de cetosis.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // Toggle Menú Móvil
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+  <!-- LAS 30 RECETAS -->
+  <section class="bg-white" id="recetas">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Las 30 recetas incluidas en el ebook</h2>
+        <p>Cada una pensada para resolver tus comidas con ingredientes reales y tiempos reducidos.</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-block">
+          <span class="cat-tag">Desayunos</span>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Tortilla de queso y espinacas</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Huevos revueltos con aguacate</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Panqueques keto de almendras</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Bowl de yogur griego con nueces</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Omelette de jamón y queso crema</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Huevos en canasta de tocino</li>
+          </ul>
+        </div>
+        <div class="cat-block">
+          <span class="cat-tag">Almuerzos</span>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Ensalada César con pollo grillado</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Bowl de atún con palta y huevo</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Wraps de lechuga con carne molida</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Sopa de pollo con crema</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Ensalada de salmón ahumado</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Zucchini relleno de queso y carne</li>
+          </ul>
+        </div>
+        <div class="cat-block">
+          <span class="cat-tag">Cenas</span>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Pollo a la manteca con ajo</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Salmón al horno con limón</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Medallones de carne con chimichurri</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Brochetas de pollo con pimiento</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Costillas de cerdo al horno rápidas</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Milanesa de pollo con costra de almendras</li>
+          </ul>
+        </div>
+        <div class="cat-block">
+          <span class="cat-tag">Guarniciones y Snacks</span>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Puré de coliflor cremoso</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Brócoli salteado con manteca y ajo</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Chips de queso al horno</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Guacamole clásico</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Palmitos gratinados</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Berenjenas a la parmesana keto</li>
+          </ul>
+        </div>
+        <div class="cat-block span-2">
+          <span class="cat-tag">Postres y Bebidas</span>
+          <div class="cat-two-col">
+            <ul>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Mousse de chocolate negro</li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Cheesecake en vaso sin horno</li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Trufas de coco y almendras</li>
+            </ul>
+            <ul>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Smoothie verde energizante</li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Café bulletproof</li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>Helado rápido de frutillas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    menuBtn.addEventListener('click', () => {
-      const isOpening = mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
-      menuBtn.setAttribute('aria-expanded', String(isOpening));
-      menuBtn.setAttribute('aria-label', isOpening ? 'Cerrar menú' : 'Abrir menú');
-    });
+  <!-- RAPIDEZ -->
+  <section class="bg-dark" id="rapidez">
+    <div class="container rapidez-grid">
+      <div class="timer-circle">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>
+        <span class="num">20</span>
+        <span class="label">Minutos o menos</span>
+      </div>
+      <div class="rapidez-text">
+        <h2>Comé keto sin pasar horas en la cocina</h2>
+        <p>Todas las recetas del ebook están diseñadas para prepararse en 20 minutos o menos, utilizando ingredientes accesibles y pasos simples.</p>
+        <a href="#oferta" class="btn">QUIERO PREPARAR RECETAS KETO EN 20 MINUTOS</a>
+      </div>
+    </div>
+  </section>
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
+  <!-- PREVIEW RECETAS -->
+  <section class="bg-light">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Un vistazo a las preparaciones</h2>
+        <p>Comidas reales, balanceadas y diseñadas para adaptarse a tu ritmo diario.</p>
+      </div>
+      <div class="grid-3">
+        <div class="rp-card">
+          <div>
+            <div class="rp-top"><span class="rp-keto">Keto: Sí</span><span class="rp-time"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>15 min</span></div>
+            <h3>Tortilla de Queso y Espinacas</h3>
+            <p class="servings">Porciones: 1 persona</p>
+          </div>
+          <div class="rp-foot"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Desayuno rápido y nutritivo</div>
+        </div>
+        <div class="rp-card">
+          <div>
+            <div class="rp-top"><span class="rp-keto">Keto: Sí</span><span class="rp-time"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>20 min</span></div>
+            <h3>Panqueques Keto de Almendras</h3>
+            <p class="servings">Porciones: 2 personas</p>
+          </div>
+          <div class="rp-foot"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Masa con harina de almendras</div>
+        </div>
+        <div class="rp-card">
+          <div>
+            <div class="rp-top"><span class="rp-keto">Keto: Sí</span><span class="rp-time"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>20 min</span></div>
+            <h3>Ensalada César con Pollo Grillado</h3>
+            <p class="servings">Porciones: 2 personas</p>
+          </div>
+          <div class="rp-foot"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Con aderezo casero</div>
+        </div>
+        <div class="rp-card">
+          <div>
+            <div class="rp-top"><span class="rp-keto">Keto: Sí</span><span class="rp-time"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>20 min</span></div>
+            <h3>Pollo a la Manteca con Ajo</h3>
+            <p class="servings">Porciones: 2 personas</p>
+          </div>
+          <div class="rp-foot"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Cocción jugosa en sartén</div>
+        </div>
+        <div class="rp-card">
+          <div>
+            <div class="rp-top"><span class="rp-keto">Keto: Sí</span><span class="rp-time"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>15 min</span></div>
+            <h3>Chips de Queso al Horno</h3>
+            <p class="servings">Porciones: 2 personas</p>
+          </div>
+          <div class="rp-foot"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Snack crocante y simple</div>
+        </div>
+        <div class="rp-card">
+          <div>
+            <div class="rp-top"><span class="rp-keto">Keto: Sí</span><span class="rp-time"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>10 min + congelado</span></div>
+            <h3>Helado Rápido de Frutillas</h3>
+            <p class="servings">Porciones: 3 personas</p>
+          </div>
+          <div class="rp-foot"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Textura cremosa sin azúcar agregada</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // ----------------------------------------------------
-    // VARIABLES EDITABLES PARA CONFIGURACIÓN RÁPIDA
-    // ----------------------------------------------------
-    const CONFIG = {
-      precio: "11.999",                  // Cambiar por el precio final
-      moneda: "USD",                   // USD, ARS, $...
-      checkoutUrl: "#oferta"           // Pegá aquí tu URL real de checkout
-    };
+  <!-- QUÉ RECIBÍS -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="sec-head">
+        <h2>¿Qué recibís exactamente con tu compra?</h2>
+        <p>Un recurso digital directo, práctico y listo para consultar en cualquier momento.</p>
+      </div>
+      <div class="grid-3-gap">
+        <div class="get-item"><span class="emoji">📕</span><div><h3>Ebook digital "30 Recetas Keto en 20 Minutos"</h3><p>El libro completo en formato PDF listo para descargar.</p></div></div>
+        <div class="get-item"><span class="emoji">🥑</span><div><h3>30 recetas keto</h3><p>Selección completa de desayunos, platos principales, snacks y postres.</p></div></div>
+        <div class="get-item"><span class="emoji">⏱️</span><div><h3>Recetas rápidas</h3><p>Todas pensadas para elaborarse en 20 minutos o menos.</p></div></div>
+        <div class="get-item"><span class="emoji">📱</span><div><h3>Formato digital multidispositivo</h3><p>Compatible con celular, tablet y computadora.</p></div></div>
+        <div class="get-item"><span class="emoji">⚡</span><div><h3>Acceso inmediato</h3><p>Descargá tu copia digital apenas se confirme la compra.</p></div></div>
+      </div>
+    </div>
+  </section>
 
-    // Aplicar configuración en el DOM
-    const priceEl = document.getElementById('product-price');
-    const currencyEl = document.getElementById('currency-symbol');
-    const checkoutBtn = document.getElementById('checkout-button');
+  <!-- TIPS -->
+  <section class="bg-light">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Tu cocina puede ser mucho más simple</h2>
+        <p>Consejos prácticos incluidos en el ebook para mantener la constancia en tu día a día.</p>
+      </div>
+      <div class="grid-5">
+        <div class="tip-card">
+          <div class="tip-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
+          <h3>Organizá tu despensa</h3>
+          <p>Tener a mano huevos, quesos, verduras y grasas saludables te permite resolver comidas sin complicaciones.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 12a6 6 0 01-12 0c0-5 6-12 6-12z"/></svg></div>
+          <h3>Hidratación clave</h3>
+          <p>Tomar suficiente agua y sumar electrolitos ayuda a sentirte con energía en el día a día.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></div>
+          <h3>Meal prep</h3>
+          <p>Adelantar la cocción de algunas proteínas te permite armar recetas en cuestión de minutos.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M11 9l3 3-3 3"/></svg></div>
+          <h3>Leé etiquetas</h3>
+          <p>Controlar los carbohidratos netos en alimentos envasados evita azúcares ocultos.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4M13 3l1.5 4.5L19 9l-4.5 1.5L13 15l-1.5-4.5L7 9l4.5-1.5z"/></svg></div>
+          <h3>Variá las verduras</h3>
+          <p>Zucchini, brócoli, coliflor y espinaca aportan variedad y textura a tus preparaciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    priceEl.textContent = CONFIG.precio;
-    currencyEl.textContent = CONFIG.moneda === 'USD' ? '$' : CONFIG.moneda;
+  <!-- OFERTA -->
+  <section class="bg-white" id="oferta">
+    <div class="container-4xl">
+      <div class="offer-box">
+        <span class="offer-badge">EBOOK DIGITAL</span>
+        <h2>Empezá hoy a preparar tus propias recetas keto</h2>
+        <p class="tagline">30 recetas keto en 20 minutos, en formato PDF de descarga inmediata.</p>
+        <div class="price-card">
+          <span class="label">Precio Final</span>
+          <div class="price-row"><span class="cur" id="currency-symbol">$</span><span class="amt" id="product-price">0</span></div>
+          <span class="note">Pago único · Sin suscripciones</span>
+        </div>
+        <a id="checkout-button" href="#" class="btn">QUIERO MI EBOOK</a>
+        <p class="fine">Compra segura · Producto digital · Acceso inmediato</p>
+      </div>
+    </div>
+  </section>
 
-    checkoutBtn.setAttribute('href', CONFIG.checkoutUrl || '#oferta');
+  <!-- FAQ -->
+  <section class="bg-light" id="faq">
+    <div class="container-4xl">
+      <div class="sec-head">
+        <h2>Preguntas Frecuentes</h2>
+        <p>Respuestas claras sobre el contenido y formato del ebook.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary><span>¿Qué recibo al comprar?</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq-body">Recibís acceso digital inmediato para descargar el ebook completo "30 Recetas Keto en 20 Minutos" en formato PDF.</div>
+        </details>
+        <details>
+          <summary><span>¿Es un ebook digital?</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq-body">Sí, es un libro en formato digital (PDF), lo que te permite empezar a leerlo y usarlo de inmediato sin esperar envíos físicos.</div>
+        </details>
+        <details>
+          <summary><span>¿Cuántas recetas incluye?</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq-body">Incluye exactamente 30 recetas divididas en desayunos, almuerzos, cenas, guarniciones, snacks, postres y bebidas.</div>
+        </details>
+        <details>
+          <summary><span>¿Las recetas son rápidas?</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq-body">Sí, todas las preparaciones están diseñadas para estar listas en 20 minutos o menos, con pasos sencillos e ingredientes accesibles.</div>
+        </details>
+        <details>
+          <summary><span>¿Puedo verlo desde mi celular?</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq-body">Sí, podés abrirlo y consultarlo cómodamente desde tu celular, tablet o computadora cada vez que cocines.</div>
+        </details>
+        <details>
+          <summary><span>¿Qué tipo de recetas incluye?</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq-body">Incluye opciones de Desayunos (como panqueques de almendras y tortillas), Almuerzos (ensaladas, wraps, sopas), Cenas (carnes, pollo, salmón), Guarniciones y Snacks (chips de queso, guacamole) y Postres/Bebidas (mousse, café bulletproof, helado rápido).</div>
+        </details>
+      </div>
+    </div>
+  </section>
 
-    // Evita que un enlace de prueba envíe al visitante a una página inexistente.
-    checkoutBtn.addEventListener('click', (event) => {
-      const url = checkoutBtn.getAttribute('href') || '';
-      if (url === '#oferta' || url.trim() === '') {
-        event.preventDefault();
-        document.getElementById('oferta').scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  </script>
+  <!-- CTA FINAL -->
+  <section class="bg-white final-cta">
+    <div class="container-4xl">
+      <h2>30 recetas. Menos complicaciones.<br>Más opciones para disfrutar tu cocina.</h2>
+      <p>Descubrí nuevas ideas para preparar comidas keto fáciles, rápidas y deliciosas.</p>
+      <a href="#oferta" class="btn">QUIERO MI EBOOK AHORA</a>
+      <p class="fine">Acceso digital inmediato</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 30 Recetas Keto en 20 Minutos. Todos los derechos reservados.</p>
+    <p>Producto digital en formato PDF. Entrega inmediata tras completar la compra.</p>
+  </div>
+</footer>
+
+<!--
+  ANTES DE PUBLICAR, revisá:
+  1) El precio y la moneda en CONFIG (abajo).
+  2) El link de checkout (Tiendanube, Shopify, Hotmart, etc.).
+  3) Garantía de devolución: no la incluí porque no me dijiste si vas a ofrecer una
+     ni en qué condiciones. Si querés sumarla, avisame y la agrego con tus términos reales.
+-->
+<script>
+  // Menú móvil
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // Configuración editable de precio y checkout
+  const CONFIG = {
+    precio: "11.999",
+    moneda: "$",
+    checkoutUrl: "https://vidaketorecetas.com/products/libro"
+  };
+  document.getElementById('product-price').textContent = CONFIG.precio;
+  document.getElementById('currency-symbol').textContent = CONFIG.moneda;
+  document.getElementById('checkout-button').setAttribute('href', CONFIG.checkoutUrl);
+</script>
 </body>
 </html>
